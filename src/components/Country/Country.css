@@ -1,0 +1,346 @@
+.bahamas-card {
+  /* max-width: 400px; */
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4f0ff 100%);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", sans-serif;
+  color: #2c3e50;
+  transition: transform 0.3s ease;
+  margin: 15px;
+}
+
+/* Active state for country detail card */
+.country-card.active {
+  position: relative;
+  overflow: hidden;
+  transform: scale(1.02);
+  box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* Animated light beam */
+.country-card.active::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 30%; /* Light beam height */
+  background: linear-gradient(
+    to bottom,
+    rgba(52, 152, 219, 0),
+    rgba(100, 200, 255, 0.8),
+    rgba(52, 152, 219, 0)
+  );
+  box-shadow: 0 0 15px rgba(100, 200, 255, 0.8);
+  animation: light-sweep 2s infinite ease-in-out;
+  z-index: 2;
+}
+
+/* Static border with gradient */
+.country-card.active::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 100%;
+  background: linear-gradient(to bottom, #3498db, #5dade2, #3498db);
+  z-index: 1;
+}
+
+@keyframes light-sweep {
+  0% {
+    top: -30%;
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+.country-header.active {
+  background: linear-gradient(to right, #2980b9, #3498db);
+}
+
+@keyframes pulse-glow {
+  0% {
+    box-shadow: 0 10px 25px rgba(52, 152, 219, 0.3);
+  }
+  100% {
+    box-shadow: 0 10px 30px rgba(52, 152, 219, 0.5);
+  }
+}
+/* ------------------------------------------------------ */
+.next-visit-btn {
+  background: linear-gradient(135deg, #3498db 0%, #2c3e50 100%);
+  color: white;
+  border: none;
+  padding: 10px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 0 #1a5276, 0 5px 10px rgba(0, 0, 0, 0.2);
+  transform-style: preserve-3d;
+  transition: all 0.3s;
+}
+.next-visit-btn:focus {
+  outline: none;
+}
+
+.next-visit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #1a5276, 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+.next-visit-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 #1a5276;
+}
+
+.next-visit-btn.added {
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  box-shadow: 0 4px 0 #219653;
+}
+
+.next-visit-btn.added::after {
+  content: " ✓";
+}
+/* ------------------------------------------------------ */
+/* Base Button Style */
+.visited-btn {
+  padding: 8px 20px;
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Inactive State (Not Visited) */
+.visited-btn:not(.active) {
+  background-color: #f1f1f1;
+  color: #666;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.visited-btn:not(.active):hover {
+  background-color: #e0e0e0;
+  transform: translateY(-2px);
+}
+
+/* Active State (Visited) */
+.visited-btn.active {
+  background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  color: white;
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+}
+
+.visited-btn.active::after {
+  content: "✓";
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  background: #2ecc71;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.7rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.visited-btn.active:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(79, 172, 254, 0.6);
+}
+.visited-btn:focus {
+  outline: 0;
+}
+/* Optional: Add an icon */
+.visited-btn i {
+  font-size: 0.9rem;
+}
+
+/* Active state indicators */
+.active-indicator {
+  position: absolute;
+  top: 10px;
+  right: 35%;
+  background: #2ecc71;
+  color: white;
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: bold;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-3px);
+  }
+}
+
+.country-card {
+  border: 1px solid #e0e0e0;
+  border-left: 5px solid transparent;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s;
+}
+.bahamas-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.country-header {
+  background: linear-gradient(to right, #0077be, #00a1e4);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  color: white;
+  position: relative;
+}
+
+.country-flag {
+  width: 80px;
+  height: 50px;
+  border: 2px solid white;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  margin-right: 20px;
+}
+
+.country-titles h2 {
+  margin: 0;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.country-titles h3 {
+  margin: 5px 0 0;
+  font-size: 1rem;
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.coat-of-arms {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+.coat-of-arms img {
+  height: 50px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+}
+
+.country-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  padding: 20px;
+  background: white;
+}
+
+.info-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-item {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 8px;
+  border-bottom: 1px dashed #e0e0e0;
+}
+
+.info-label {
+  font-weight: 600;
+  color: #0077be;
+}
+
+.info-value {
+  font-weight: 500;
+}
+
+.details-accordion {
+  padding: 0 20px 15px;
+  background: white;
+}
+
+details {
+  border-top: 1px solid #eee;
+  padding-top: 15px;
+}
+
+summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: #0077be;
+  outline: none;
+}
+
+.accordion-content {
+  padding: 10px 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.accordion-content p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+}
+
+.map-links {
+  padding: 15px 20px;
+  background: #f8f9fa;
+  text-align: center;
+  display: flex;
+  justify-content: space-between;
+}
+
+.map-button {
+  background: #0077be;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.map-button:hover {
+  background: #005a8c;
+  transform: translateY(-2px);
+}
+
+.map-button i {
+  font-size: 1.1rem;
+}
